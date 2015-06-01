@@ -4,3 +4,4 @@
 /spring-websocket/.settings
 /spring-websocket/target
 .project
+.classpath
