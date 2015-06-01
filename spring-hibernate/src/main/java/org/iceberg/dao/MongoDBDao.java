@@ -30,17 +30,19 @@ public class MongoDBDao {
 	MongoDatabase database = mongoClient.getDatabase("hello-world");
 	
 	public static void main(String[] args) {
-		MongoClient mongoClient = new MongoClient( "localhost" , 27017 );
-		MongoDatabase database = mongoClient.getDatabase("hello-world");
-		MongoCollection<Document> collection = database.getCollection("user");
+//		MongoClient mongoClient = new MongoClient( "localhost" , 27017 );
+//		MongoDatabase database = mongoClient.getDatabase("hello-world");
+//		MongoCollection<Document> collection = database.getCollection("user");
+//		
+////		Document doc = new Document("name", "MongoDB")
+////        .append("type", "database")
+////        .append("count", 1)
+////        .append("info", new Document("x", 203).append("y", 102));
+////		collection.insertOne(doc);
+//		
+//		Document document = collection.find().first();
+//		System.out.println(document.toJson());
 		
-//		Document doc = new Document("name", "MongoDB")
-//        .append("type", "database")
-//        .append("count", 1)
-//        .append("info", new Document("x", 203).append("y", 102));
-//		collection.insertOne(doc);
-		
-		Document document = collection.find().first();
-		System.out.println(document.toJson());
+		System.out.println("123");
 	}
 }

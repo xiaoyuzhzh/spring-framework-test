@@ -23,7 +23,7 @@
     
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
     	<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-    	<property name="url" value="jdbc:mysql://localhost:3306/hibernate"></property>
+    	<property name="url" value="jdbc:mysql://localhost:3307/hibernate"></property>
     	<property name="username" value="hibernate"></property>
     	<property name="password" value="hibernatep"></property>
     </bean>
