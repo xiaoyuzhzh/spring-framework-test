@@ -1,5 +1,6 @@
 package org.iceberg.dao;
 
-public class BaseDao {
 
+public class BaseDao {
+	
 }

@@ -52,6 +52,13 @@
 		<version>${SpringVersion}</version>
 	</dependency>
 	
+	<!-- transaction -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-tx</artifactId>
+		<version>${SpringVersion}</version>
+	</dependency>
+	
 	<!-- webSocket 集成包 -->
 	<dependency>
 		<groupId>org.springframework</groupId>
@@ -66,6 +73,21 @@
 		<version>1.3.1</version>
 	</dependency>
 	
+	<!-- dbcp -->
+	<dependency>
+		<groupId>commons-dbcp</groupId>
+		<artifactId>commons-dbcp</artifactId>
+		<version>1.4</version>
+	</dependency>
+	
+	<!-- mysql驱动 -->
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>5.1.35</version>
+	</dependency>
+	
+	
 	<!-- servlet -->
 	<dependency>
 		<groupId>javax.servlet</groupId>
@@ -73,6 +95,27 @@
 		<version>3.0.1</version>
 	</dependency>
 	
+	<!-- hibernate -->
+	<dependency>
+	   <groupId>org.hibernate</groupId>
+	   <artifactId>hibernate-core</artifactId>
+	   <version>4.3.10.Final</version>
+	</dependency>
+	
+	<!-- spring集成hibernate -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-orm</artifactId>
+		<version>${SpringVersion}</version>
+	</dependency>
+	
+	
+	<!-- mongoDB -->
+	<dependency>
+        <groupId>org.mongodb</groupId>
+        <artifactId>mongodb-driver</artifactId>
+        <version>3.0.2</version>
+    </dependency>
 	
   </dependencies>
   </dependencyManagement>

@@ -9,11 +9,9 @@
 	  <relativePath>../pom.xml</relativePath>
   </parent>
   
-  <groupId>spring</groupId>
   <artifactId>spring-hibernate</artifactId>
   <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>spring-hibernate Maven Webapp</name>
+  <name>spring-hibernate</name>
   <url>http://maven.apache.org</url>
   <dependencies>
   	<!-- spring 核心库 -->
@@ -46,6 +44,12 @@
 		<artifactId>spring-webmvc</artifactId>
 	</dependency>
 	
+	<!-- transaction -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-tx</artifactId>
+	</dependency>
+	
 	<!-- webSocket 集成包 -->
 	<dependency>
 		<groupId>org.springframework</groupId>
@@ -63,6 +67,36 @@
 		<groupId>javax.servlet</groupId>
 		<artifactId>javax.servlet-api</artifactId>
 	</dependency>
+	
+	<!-- dbcp -->
+	<dependency>
+		<groupId>commons-dbcp</groupId>
+		<artifactId>commons-dbcp</artifactId>
+	</dependency>
+	
+	<!-- mysql驱动 -->
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+	</dependency>
+	
+	<!-- hibernate -->
+	<dependency>
+	   <groupId>org.hibernate</groupId>
+	   <artifactId>hibernate-core</artifactId>
+	</dependency>
+	
+	<!-- spring集成hibernate -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-orm</artifactId>
+	</dependency>
+	
+	<!-- mongoDB -->
+	<dependency>
+        <groupId>org.mongodb</groupId>
+        <artifactId>mongodb-driver</artifactId>
+    </dependency>
 	
 	</dependencies>
   <build>
