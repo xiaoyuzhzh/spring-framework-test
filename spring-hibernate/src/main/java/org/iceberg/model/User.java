@@ -18,29 +18,28 @@ public class User extends BaseModel{
 	@Column(name="NICKNAME",length=50)
 	private String nickName;
 
-	protected String getUserName() {
+	public String getUserName() {
 		return userName;
 	}
 
-	protected void setUserName(String userName) {
+	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 
-	protected String getPassWord() {
+	public String getPassWord() {
 		return passWord;
 	}
 
-	protected void setPassWord(String passWord) {
+	public void setPassWord(String passWord) {
 		this.passWord = passWord;
 	}
 
-	protected String getNickName() {
+	public String getNickName() {
 		return nickName;
 	}
 
-	protected void setNickName(String nickName) {
+	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
-	
 	
 }

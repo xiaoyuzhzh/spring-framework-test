@@ -11,11 +11,11 @@ public class BaseModel {
 	@Column(name="ID",unique=true,length=64)
 	protected String id;
 
-	protected String getId() {
+	public String getId() {
 		return id;
 	}
 
-	protected void setId(String id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	

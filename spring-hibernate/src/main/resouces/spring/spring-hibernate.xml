@@ -19,7 +19,8 @@
 	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
 	">
 
-    <tx:annotation-driven/>
+    
+    <context:annotation-config/>
     
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
     	<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
@@ -30,8 +31,35 @@
     
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
     	<property name="dataSource" ref="dataSource"></property>
-    	<property name="packagesToScan" value="org.iceberg"></property>
+    	<property name="packagesToScan" value="org.iceberg.*"></property>
+    		 	<property name="hibernateProperties">
+	 		<props>
+	 			<!-- JDBC connection pool (use the built-in) -->
+		        <prop key="connection.pool_size">1</prop>
+		
+		        <!-- SQL dialect -->
+		        <prop key="dialect">org.hibernate.dialect.MySQLDialect</prop>
+		
+		        <!-- Enable Hibernate's automatic session context management -->
+		        <prop key="current_session_context_class">thread</prop>
+		
+		        <!-- Disable the second-level cache  -->
+		        <prop key="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</prop>
+		
+		        <!-- Echo all executed SQL to stdout -->
+		        <prop key="show_sql">true</prop>
+		
+				<!-- 4.3.10.final版本的hibernate自动建表的配置似乎不支持简写的自动建表属性
+					这里需要写全hibernate.hbm2ddl.auto，而不能用hbm2ddl.auto
+				 -->
+		        <!-- Drop and re-create the database schema on startup -->
+		        <prop key="hibernate.hbm2ddl.auto">update</prop>
+		
+	 		</props>
+	 	</property>
     </bean>
+    
+    
     
     <!-- Transaction -->
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
