@@ -1,2 +1,2 @@
 # spring-framework-test
-学习spring失误隔离级别
+学习spring事务隔离级别
