@@ -1,2 +1,2 @@
-# spring-framework-test
-学习spring框架的新功能
+#template
+这个分支用来保存一下创建项目需要的模板文件
