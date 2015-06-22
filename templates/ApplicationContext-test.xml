@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="  
+http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+http://www.springframework.org/schema/aop 
+http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
+http://www.springframework.org/schema/tx 
+http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+">
+    <!-- 测试使用的数据源，因为测试的时候是读取不到tomcat中的数据源的 -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"       
+	        destroy-method="close">       
+	    <property name="driverClassName" value="com.mysql.jdbc.Driver" />      
+	    <property name="url" value="jdbc:mysql://localhost:3308/duapp?useUnicode=true&amp;characterEncoding=utf-8" />      
+	    <property name="username" value="root" />      
+	    <property name="password" value="123456" />      
+	</bean>  
+    
+    <!-- 事务相关的配置 -->
+    <bean id="transactionManager" 
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager"> 
+        <property name="dataSource" ref="dataSource" /> 
+    </bean> 
+    
+    <!-- 启用注解切面 -->
+    <aop:aspectj-autoproxy/> 
+    
+    <!-- 定义通知 -->
+    <tx:advice id="userTxAdvice" transaction-manager="transactionManager"> 
+        <tx:attributes> 
+            <tx:method name="*" propagation="REQUIRED" read-only="false" 
+                rollback-for="java.lang.Exception"/> 
+        </tx:attributes> 
+    </tx:advice>
+    <!-- 定义切点并放入通知 --> 
+    <aop:config> 
+        <aop:pointcut id="pc" 
+            expression="execution(* org.iceberg.duapp.business..*.*(..))" /> 
+             <!-- 把事务控制在Business层 -->
+        <aop:advisor pointcut-ref="pc" advice-ref="userTxAdvice" /> 
+    </aop:config> 
+    
+    <!--   MyBatis sqlSessionFactory 配置 mybatis-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"> 
+    	<!-- mybatis的基本配置文件位置 -->
+        <property name="configLocation" 
+        value="classpath:/org/iceberg/duapp/config/mybatis/SqlMapConfig.xml" /> 
+        <!-- mybatis的map.xml的位置 -->
+        <property name="mapperLocations" value="classpath*:org/iceberg/duapp/config/mybatis/maps/*/*.xml"></property>
+        <!-- mybatis的数据源 -->
+        <property name="dataSource" ref="dataSource" /> 
+        <!-- 将目标包中的类自动注册typeAliase（包含该包下所有层次的包中的类），这样在map.xml中就可以用类的非完全名称，如User类直接用user，而不需要包全名。
+        	只是这样的话类名便不可以一样。慎用！！！ -->
+        <property name="typeAliasesPackage" value="org.iceberg.duapp.bean" />
+    </bean> 
+    
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate"> 
+    	<!-- 给创建sqlSession的构造函数传参 ，这样在项目中可以直接用注入的sqlSession写代码，其他就与mybatis一样了-->
+        <constructor-arg index="0" ref="sqlSessionFactory" />
+    </bean> 
+    
+    <!-- MyBatis-spring映射器扫描配置 ，使用之后自动注册接口并实例化持久类，与mybatis的类无异。耦合度最低。所有实例的id是类名第一个字母小写-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	  <property name="basePackage" value="org.iceberg.duapp.dao" />
+	</bean>
+    
+    <!-- 使用注解事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/> 
+	<!-- 使用注解自动装配 -->
+    <context:annotation-config/>
+    <!-- 自动注册指定路径的类为bean -->
+    <context:component-scan base-package="*"/>
+</beans>
