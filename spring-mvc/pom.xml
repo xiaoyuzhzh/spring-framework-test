@@ -1,130 +1,105 @@
-﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.iceberg</groupId>
-  <artifactId>spring-test</artifactId>
-  <packaging>pom</packaging>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>spring-test-parent</name>
+  
+  <parent>
+ 	  <groupId>org.iceberg</groupId>
+	  <artifactId>spring-test</artifactId>
+	  <version>0.0.1-SNAPSHOT</version>
+	  <relativePath>../pom.xml</relativePath>
+  </parent>
+  
+  <artifactId>spring-mvc</artifactId>
+  <packaging>war</packaging>
+  <name>spring-mvc</name>
   <url>http://maven.apache.org</url>
-
-  <modules>
-    <!-- 这里是模块的相对路径名 -->
-    <module>spring-hibernate</module>
-  </modules>
-  
-  
-  <properties>
-  	<!-- spring 版本 -->
-  	<SpringVersion>4.0.0.RELEASE</SpringVersion>
-  </properties>
-  
-  
-  <dependencyManagement>
   <dependencies>
   	<!-- spring 核心库 -->
   	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-core</artifactId>
-		<version>${SpringVersion}</version>
 	</dependency>
   	
   	<!-- 上下文必须包 -->
   	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-context</artifactId>
-		<version>${SpringVersion}</version>
 	</dependency>
 	
 	<!-- spring bean -->
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-beans</artifactId>
-		<version>${SpringVersion}</version>
 	</dependency>
 	
 	<!-- spring web集成包 -->
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-web</artifactId>
-		<version>${SpringVersion}</version>
 	</dependency>
 	
 	<!-- spring mvc -->
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-webmvc</artifactId>
-		<version>${SpringVersion}</version>
 	</dependency>
 	
 	<!-- transaction -->
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-tx</artifactId>
-		<version>${SpringVersion}</version>
 	</dependency>
 	
 	<!-- webSocket 集成包 -->
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-websocket</artifactId>
-		<version>4.0.0.RELEASE</version>
 	</dependency>
 	
 	<!-- 上传需要的包 -->
     <dependency>
 		<groupId>commons-fileupload</groupId>
 		<artifactId>commons-fileupload</artifactId>
-		<version>1.3.1</version>
+	</dependency>
+	
+	<!-- servlet -->
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>javax.servlet-api</artifactId>
 	</dependency>
 	
 	<!-- dbcp -->
 	<dependency>
 		<groupId>commons-dbcp</groupId>
 		<artifactId>commons-dbcp</artifactId>
-		<version>1.4</version>
 	</dependency>
 	
 	<!-- mysql驱动 -->
 	<dependency>
 		<groupId>mysql</groupId>
 		<artifactId>mysql-connector-java</artifactId>
-		<version>5.1.35</version>
-	</dependency>
-	
-	
-	<!-- servlet -->
-	<dependency>
-		<groupId>javax.servlet</groupId>
-		<artifactId>javax.servlet-api</artifactId>
-		<version>3.0.1</version>
 	</dependency>
 	
 	<!-- hibernate -->
 	<dependency>
 	   <groupId>org.hibernate</groupId>
 	   <artifactId>hibernate-core</artifactId>
-	   <version>4.3.10.Final</version>
 	</dependency>
 	
 	<!-- spring集成hibernate -->
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-orm</artifactId>
-		<version>${SpringVersion}</version>
 	</dependency>
-	
 	
 	<!-- mongoDB -->
 	<dependency>
         <groupId>org.mongodb</groupId>
         <artifactId>mongodb-driver</artifactId>
-        <version>3.0.2</version>
     </dependency>
 	
-  </dependencies>
-  </dependencyManagement>
+	</dependencies>
   <build>
-    <finalName>websocket</finalName>
+    <finalName>spring-hibernate</finalName>
   </build>
 </project>
