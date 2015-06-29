@@ -25,5 +25,5 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
     <!-- 自动注册指定路径的类为bean -->
     <context:component-scan base-package="*"/>
     
-    <import resource="spring/spring-hibernate.xml"></import>
+<!--     <import resource="spring/spring-hibernate.xml"></import> -->
 </beans>

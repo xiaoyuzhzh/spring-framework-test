@@ -3,7 +3,7 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-	<display-name>spring-hibernate</display-name>
+	<display-name>spring-mvc</display-name>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value><!-- Spring的配置文件 -->
