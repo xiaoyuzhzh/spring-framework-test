@@ -1,0 +1,92 @@
+﻿<html>
+<head>
+<meta charset="utf-8">
+<title>websocket测试网页</title>
+<script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.1.3/jquery.js"></script>
+</head>
+<body>
+<h2>websocket测试连接</h2>
+<label>服务器地址</label>：<input id="Connection" type="text" value="" placeholder="这里输入服务器地址"><br/>
+<label>客户端信息</label>：<input id="clientInfo" type="text" value="" placeholder="这里输入客户端信息"><br/>
+<button onclick="clickConnect()">点击链接</button><br/>
+<textarea id="ToggleConnection">
+
+</textarea>
+
+<div id="SendDataContainer">
+<input id="DataToSend" value="" placeholder="这里输入要发送的信息">
+<button onclick="SendDataClicked()">发送》》</button>
+</div>
+</body>
+<script>
+
+function clickConnect(){
+console.log("准备连接到聊天服务器 ...");
+try {
+ ws = 
+ new WebSocket("ws://" + document.getElementById("Connection").value);
+  SocketCreated = true;
+} catch (ex) {
+  console.log(ex, "ERROR");
+  return;
+}
+document.getElementById("ToggleConnection").innerHTML = "断开";
+ws.onopen = WSonOpen;
+ws.onmessage = WSonMessage;
+ws.onclose = WSonClose;
+ws.onerror = WSonError;
+}
+
+
+
+function ToggleConnectionClicked() {
+          if (SocketCreated && (ws.readyState == 0 || ws.readyState == 1)) {  
+                ws.close();
+            } else {
+                console.log("准备连接到聊天服务器 ...");
+                try {
+                 ws = 
+                 new WebSocket("ws://" + document.getElementById("Connection").value);
+                  SocketCreated = true;
+                } catch (ex) {
+                  console.log(ex, "ERROR");
+                  return;
+                }
+                document.getElementById("ToggleConnection").innerHTML = "断开";
+                ws.onopen = WSonOpen;
+                ws.onmessage = WSonMessage;
+                ws.onclose = WSonClose;
+                ws.onerror = WSonError;
+            }
+        };
+
+        function WSonOpen() {
+            console.log("连接已经建立。", "OK");
+            $("#SendDataContainer").show("slow");
+        };
+
+        function WSonMessage(event) {
+            console.log(event.data);            
+        };
+
+        function WSonClose() {
+            console.log("连接关闭。", "ERROR");
+            document.getElementById("ToggleConnection").innerHTML = "连接";
+            $("#SendDataContainer").hide("slow");
+        };
+
+
+        function WSonError() {
+            console.log("WebSocket错误。", "ERROR");
+        };
+
+function SendDataClicked()
+ {
+            if (document.getElementById("DataToSend").value != "") {
+                ws.send(document.getElementById("clientInfo").value + "说 :\"" + 
+document.getElementById("DataToSend").value + "\"");
+                document.getElementById("DataToSend").value = "";
+            }
+        };
+</script>
+</html>
