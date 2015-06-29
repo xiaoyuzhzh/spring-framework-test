@@ -10,13 +10,13 @@
 
   <modules>
     <!-- 这里是模块的相对路径名 -->
-    <module>spring-hibernate</module>
+    <module>spring-mvc</module>
   </modules>
   
   
   <properties>
   	<!-- spring 版本 -->
-  	<SpringVersion>4.0.0.RELEASE</SpringVersion>
+  	<SpringVersion>4.0.1.RELEASE</SpringVersion>
   </properties>
   
   
