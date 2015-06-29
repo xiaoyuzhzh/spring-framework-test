@@ -68,7 +68,7 @@
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-websocket</artifactId>
-		<version>4.0.0.RELEASE</version>
+		<version>${SpringVersion}</version>
 	</dependency>
 	
 	<!-- 上传需要的包 -->
