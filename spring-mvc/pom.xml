@@ -97,6 +97,13 @@
         <groupId>org.mongodb</groupId>
         <artifactId>mongodb-driver</artifactId>
     </dependency>
+    
+    <!-- 生成二维码工具 -->
+    <dependency>
+		<groupId>com.github.sogyf</groupId>
+		<artifactId>goja-qrcode</artifactId>
+		<version>0.1.7</version>
+	</dependency>
 	
 	</dependencies>
   <build>
