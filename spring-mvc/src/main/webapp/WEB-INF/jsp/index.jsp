@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  <div class="container-fluid">
 	    <div class="navbar-header">
 	      <a class="navbar-brand" href="#"> 
-	        <img alt="Brand" style="height:30px;width:auto;" src="<%=path%>/resources/imgs/Brand2.png">
+	        <img alt="Brand" style="height:30px;width:auto;margin-top: -5px;" src="<%=path%>/resources/imgs/Brand2.png">
 	      </a>
 	    </div>
 	  </div>
