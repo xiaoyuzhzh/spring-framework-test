@@ -5,3 +5,5 @@
 /spring-websocket/target
 .project
 *.classpath
+*.iml
+.idea
