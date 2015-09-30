@@ -2,7 +2,7 @@
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
-<web-app>
+<>
 	<display-name>spring-hibernate</display-name>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -23,6 +23,11 @@
 			<param-value>UTF-8</param-value>
 		</init-param>
 	</filter>
+
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/</url-pattern>
+	</filter-mapping>
 	
 	<listener>
 		<listener-class>
